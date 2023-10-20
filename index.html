@@ -1,0 +1,130 @@
+<!-- Luke Greenberg
+Web Development Periods 3 & 4 Even
+10/19/23 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic CSS</title>
+    <link rel = "stylesheet" href = "my css test file.css" />
+    <style>
+        body
+        {
+            background-color: cornflowerblue;
+            color:green;
+        }
+        div
+        {
+            text-align: justify;
+            color:black;
+            background-color: orange;
+            font: bold 24pt comic sans ms;
+            text-decoration: underline wavy green;
+        }
+        span
+        {
+            background-color: #A22200;
+            color:rgb(22, 117, 221);
+        }
+        img
+        {
+            float:left;
+            padding-right: 20px;
+        }
+    </style>
+    <script src = "utilities.js"></script>
+    <script>
+        function initialize()
+        {
+            halloweenText = document.getElementById("colordiv");
+            fontSizeOutput = document.getElementById("sizeout");
+            numberOutput = document.getElementById("numout");
+            fontSize = 24;
+            fore = "black";
+            back = "orange";
+            textWidth = 100;
+            rndNum = 0;
+            display();
+        }
+        function toggleColor()
+        {
+            var tmp = fore;
+            fore = back;
+            back = tmp;
+            display();
+        }
+        function display()
+        {
+            halloweenText.style.color = fore;
+            halloweenText.style.backgroundColor = back;
+            halloweenText.style.width = textWidth + "%";
+            fontSizeOutput.innerHTML = fontSize;
+            textOutput.style.fontSize = fontSize + "pt";
+            numberOutput.innerHTML = rndNum;
+        }
+        function changeWidth(w)
+        {
+            textWidth = w;
+            display();
+        }
+        function modifyFontSize(mod)
+        {
+            fontSize += mod;
+            if(fontSize < 4)
+            {
+                fontSize = 4;
+            }
+            display();
+        }
+        function changeNumber()
+        {
+            rndNum = getRandomInteger(1, 10);
+            display();
+        }
+    </script>
+</head>
+<body onload = "initialize();">
+    <!-- Part 2: Working With Images -->
+    <div>
+        <img src = "doctor who.jpg" />
+        <span>
+            Is a vote guaranteed to take place on Thursday? 
+            No, it isn't. The board meeting had already been in the diary for some time and will take place in the afternoon to accommodate the Glazer family living in a different time zone. It is likely to be a virtual event. 
+            It is now increasingly unlikely that a deal between the Glazer family and Ratcliffe will be at a stage where a vote can be held. 
+            Negotiations over the make-up of Ratcliffe's proposed minority investment are continuing and there is still plenty to be ironed out. 
+            While there is still time for a deal to be agreed before Thursday's board meeting, meaning a vote could happen, there is a strong sense that will not be the case.
+        </span>
+        <div id = "colordiv">
+            Click the button to switch me from black to orange and back again and again. Happy Halloween.
+        </div>
+        <p>
+            <button onclick = "toggleColor();">Toggle Colors</button>
+            <button onclick = "changeWidth(25);">25% Width</button>
+            <button onclick = "changeWidth(50);">50% Width</button>
+            <button onclick = "changeWidth(75);">75% Width</button>
+            <button onclick = "changeWidth(100);">100% Width</button>
+        </p>
+    </div>
+    <div id = "textdiv">
+        I am a wonderful example of how fonts work!
+    </div>
+
+    <hr/>
+
+    <p>
+        <div>Current font size: <span id = "sizeout"></span>point</div>
+        <button onclick = "modifyFontSize(1);">Font Size ++</button>
+        <button onclick = "modifyFontSize(-1);">Font Size --</button>
+    </p>
+
+    <hr/>
+    <h1> Old Doctors </h1>
+        <img src = "images/jon pertwee.jpg" />
+        <img src = "images/tom baker.jpg" />
+        <img src = "images/matt smith.jpg" />
+    <h1>This is my great page about external files</h1>
+    <p id = "numout"></p>
+    <button onclick="changeNumber();">Change the number</button>
+</body>
+</html>
